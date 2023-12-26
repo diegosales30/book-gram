@@ -1,0 +1,64 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.logoContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+    svg{
+      border-radius: 85px 25px 25px 25px;
+      padding: 5px;
+      background-color: aliceblue;
+    }
+  
+  h1{
+    //font-family: 'Courier New', Courier, monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.8rem;
+    
+  }
+}
+.btnContainer{
+
+  button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-top: 20px;
+    width: 200px;
+    height: 35px;
+    border: none;
+    outline: none;
+   border-radius: 10px;
+    background-color: #ffffff;
+    color: rgb(76, 69, 69);
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    svg{
+      margin-left: 5px;
+    
+    }
+  }
+}
+.textContainer{
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+  p{
+    text-align: center;
+    margin: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+}
