@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #000020;
   
 }
 .logoContainer{
@@ -13,22 +14,50 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-    svg{
+  .logo{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    .svgLogo{
+      display: inline-block;
+      margin: 0 auto;
+      margin-left: 45px;
       border-radius: 85px 25px 25px 25px;
       padding: 5px;
-      background-color: aliceblue;
+      background-color: #ffffff;
+      font-size: 150px;
+      color: #c02d32;
+      
     }
+    .svgLogo2{
+      position: relative;
+      bottom: 45px;
+      right: 155px;
+      border-radius: round($number: 50%);
+      padding: 5px;
+      background-color: #ffffff;
+      font-size: 45px;
+      color: #c02d32;
+    }
+  }
+    
   
   h1{
-    //font-family: 'Courier New', Courier, monospace;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 2.8rem;
+    display: flex;
+    align-items: center;
+    //Verdana, Geneva, Tahoma, sans-serif;
+    font-family: cursive;
+    font-size: 3rem;
     
   }
 }
 .btnContainer{
-
+  height: 100px;
+  display: flex;
+    align-items: flex-end;
+    justify-content: center;
   button{
     display: flex;
     align-items: center;
@@ -41,13 +70,13 @@
     outline: none;
    border-radius: 10px;
     background-color: #ffffff;
-    color: rgb(76, 69, 69);
+    color:#000020;
     cursor: pointer;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 0.8rem;
     font-weight: 600;
     svg{
-      margin-left: 5px;
+      margin-left: 6px;
     
     }
   }
@@ -60,5 +89,6 @@
     text-align: center;
     margin: auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ffffff;
   }
 }
