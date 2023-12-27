@@ -1,11 +1,22 @@
 "use client";
+
 import styles from "./loginPage.module.scss";
 
 import { FaBook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { PiFilePdfBold } from "react-icons/pi";
+import { useRouter } from "next/navigation";
+import { useLoggedContext } from "@/app/context/loginContext";
 
 function LoginPage() {
+  const { setLogged } = useLoggedContext();
+  const route = useRouter();
+
+  const handleLogin = () => {
+    setLogged(true);
+    route.push("/dashboard");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.logoContainer}>
@@ -16,7 +27,7 @@ function LoginPage() {
         <h1>BookGram</h1>
       </div>
       <div className={styles.btnContainer}>
-        <button>
+        <button onClick={handleLogin}>
           Entrar com o Google
           <FcGoogle size={25} />
         </button>
@@ -30,4 +41,5 @@ function LoginPage() {
     </div>
   );
 }
+
 export default LoginPage;
