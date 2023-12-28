@@ -1,0 +1,48 @@
+.headerContainer {
+  background-color: #161616;
+  color: rgb(255, 255, 255);
+  max-width: 1360px;
+  min-width: 310px;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.headerProfile {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 10px;
+
+  img{
+    border-radius: 100%;
+  }
+  p{
+    margin-left: 10px;
+  }
+}
+
+
+.headerBtn{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  .nightMode{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    svg{
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  }
+
+  button{
+    display: flex;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
