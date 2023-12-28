@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useMemo } from "react";
 const LoggedContext = createContext({})
 
 export const LoggedContextProvider = ({ children }) => {
-    const [logged, setLogged] = useState(false);
+    const [logged, setLogged] = useState(true);
     const contextValue = useMemo(() => ({ logged, setLogged }), [logged, setLogged]);
     return (
         <LoggedContext.Provider value={contextValue}>

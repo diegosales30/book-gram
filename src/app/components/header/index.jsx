@@ -1,23 +1,28 @@
 "use client";
+
 import styles from "./header.module.scss";
+
+//context
 import { useLoggedContext } from "@/app/context/loginContext";
+import { useDarkContext } from "@/app/context/darkContext";
+
 import Image from "next/image";
-import profileImg from "../../assets/images.png";
+
+import profileImg from "../../assets/image.jpeg";
 
 import { IoMdLogOut } from "react-icons/io";
 import { MdNightsStay, MdWbSunny } from "react-icons/md";
 
-import { useState } from "react";
 
 function Header() {
   const { setLogged } = useLoggedContext();
-  const [darkMode, setDarkMode] = useState(false);
+  const {dark, setDark } = useDarkContext();
 
   const handleLogout = () => {
     setLogged(false);
   };
   const handleSwitchMode = () => {
-    setDarkMode(!darkMode);
+    setDark(!dark);
   };
 
   return (
@@ -28,13 +33,13 @@ function Header() {
       </div>
       <div className={styles.headerBtn}>
         <div className={styles.nightMode}>
-          {darkMode && (
+          {dark && (
             <>
               <MdWbSunny size={20} onClick={handleSwitchMode} />
               <p>Light Mode</p>
             </>
           )}
-          {!darkMode && (
+          {!dark && (
             <>
               <MdNightsStay size={20} onClick={handleSwitchMode} />
               <p>Dark Mode</p>

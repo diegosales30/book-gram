@@ -1,14 +1,15 @@
 "use client";
-import { useLoggedContext } from "@/app/context/loginContext";
-import { useRouter } from "next/navigation";
+
 import Header from "../header";
+import MainComponent from "../mainComponent";
 
 function DashboardComponent() {
   
   return (
-    <div>
+    <>
       <Header />
-    </div>
+      <MainComponent />
+    </>
     
   )
 }

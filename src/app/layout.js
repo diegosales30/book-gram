@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 import { LoggedContextProvider } from "./context/loginContext";
+import { DarkContextProvider } from "./context/darkContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,10 +14,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <head>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="./favicom.ico" type="image/x-icon" />
       </head>
       <body className={inter.className}>
-        <LoggedContextProvider>{children}</LoggedContextProvider>
+        <LoggedContextProvider>
+          <DarkContextProvider>{children}</DarkContextProvider>
+        </LoggedContextProvider>
       </body>
     </html>
     /*

@@ -1,9 +1,9 @@
 .headerContainer {
   background-color: #161616;
   color: rgb(255, 255, 255);
-  max-width: 1360px;
+  max-width: 1920px;
   min-width: 310px;
-  height: 5rem;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,6 +21,7 @@
   }
   p{
     margin-left: 10px;
+    font-family: cursive;
   }
 }
 
@@ -36,6 +37,9 @@
     svg{
       cursor: pointer;
       margin-right: 5px;
+    }
+    p{
+      font-family: cursive;
     }
   }
 

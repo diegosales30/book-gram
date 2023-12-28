@@ -6,10 +6,13 @@ import { FaBook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { PiFilePdfBold } from "react-icons/pi";
 import { useRouter } from "next/navigation";
+//context
 import { useLoggedContext } from "@/app/context/loginContext";
+
 
 function LoginPage() {
   const { setLogged } = useLoggedContext();
+  
   const route = useRouter();
 
   const handleLogin = () => {
