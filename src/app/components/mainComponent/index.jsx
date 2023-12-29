@@ -1,5 +1,6 @@
 "use client";
 import styles from "./main.module.scss";
+import SearchComponent from "../searchComponent";
 
 //context
 import { useDarkContext } from "@/app/context/darkContext";
@@ -9,7 +10,7 @@ function MainComponent() {
 
   return (
     <main className={dark ? styles.lightMode : styles.darkMode}>
-      <h1>Hello World</h1>
+      <SearchComponent />
     </main>
   );
 }
