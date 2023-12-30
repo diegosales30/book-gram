@@ -11,7 +11,8 @@
   flex-direction: column;
   align-items: center;
   h1{
-    font-family: cursive;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.8rem;
     
   }
 }
@@ -34,13 +35,21 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 15px;
     margin: 15px;
-  
+    .deleteButton{
+      position: relative;
+      top: -15px;
+      left: 123px;
+      border: none;
+      cursor: pointer;
+    }
     img{
       border-radius: 5px;
+      
     }
     div{
+      text-align: center;
       h2{
-        font-family: cursive;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         font-size: 1.2rem;
         white-space: wrap;     
         overflow: hidden;           
@@ -48,8 +57,15 @@
         max-width: 15ch
       }
       p{
-        font-family: cursive;
+        margin: auto;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         font-size: 0.9rem;
+        white-space: nowrap;     
+        overflow: hidden;           
+        text-overflow: ellipsis; 
+        max-width: 25ch;
+        font-weight: 600;
+        
       }
     }
     .buttons{
@@ -57,11 +73,27 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      svg{
-        cursor: pointer;
+      span{
+        width: 50px;
+        display: flex;
+        
+        flex-direction: column;
+        align-items: center ;
+        justify-content: center ;
+        
+        
+        
+        svg{
+          cursor: pointer;
+          
+        }
+        p{
+          font-size: 0.8rem;
+          text-align: center;
+        }
       }
+      
     }
   }
-
-  
 }
+
