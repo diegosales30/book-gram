@@ -1,7 +1,7 @@
 .container{
-  max-width: 1080px;
+  max-width: 1360px;
   width: 100%;
-  height: calc(100vh - 6.9rem);
+  height: calc(100vh - 10.9rem);
   margin: auto;
 }
 .containerList{
@@ -20,7 +20,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  overflow-y: auto;
   justify-content: center;
   
   li{

@@ -166,7 +166,9 @@ function ListComponent() {
           </li>
         </ul>
       </div>
+      
     </main>
+    
   );
 }
 
