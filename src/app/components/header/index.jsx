@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import styles from "./header.module.scss";
 
 //context
@@ -18,13 +19,36 @@ import AddBookComponent from "../addBookComponent";
 
 function Header() {
   const { setLogged } = useLoggedContext();
+  const [searchMobile, setSearchMobile] = useState(false);
+  const searchMobileRef = useRef(null);
   //const {dark, setDark } = useDarkContext();
+  
+  const handleSearchMobile = () => {
+    setSearchMobile(true);
+    
+  };
+
+  const handleClickOutside = (event) => {
+    if (searchMobileRef.current && !searchMobileRef.current.contains(event.target)) {
+      // Clicou fora do modal, fecha o modal
+      setSearchMobile(false);
+      
+    }
+  };
+
+  useEffect(() => {
+    // Adiciona o event listener quando o componente monta
+    document.addEventListener('click', handleClickOutside);
+    // Remove o event listener quando o componente desmonta
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [searchMobile]);
 
   const handleLogout = () => {
     setLogged(false);
   };
   //modo noturno desativado
-
   // const handleSwitchMode = () => {
   //   setDark(!dark);
   // };
@@ -32,13 +56,20 @@ function Header() {
   return (
     <header className={styles.headerContainer}>
       <AddBookComponent />
-      <div className={styles.teste1}>
+      <div className={styles.searchPc}>
         <SearchComponent />
       </div>
-      <button className={styles.teste2}>
+      <button className={styles.searchMobile} onClick={handleSearchMobile}>
         <MdOutlineManageSearch size={30} color="#5f6368" />
         <p>Pesquisar</p>
       </button>
+      {
+        searchMobile && (
+          <div className={styles.searchMobileContainer} ref={searchMobileRef}>
+            <SearchComponent />
+          </div>
+        )
+      }
       <div className={styles.headerContent}>
         <div className={styles.headerProfile}>
         <Image src={profileImg} width={35} height={35} alt="profile image" />

@@ -10,33 +10,21 @@
   margin: auto;
   
 }
-
-//teste de display e media
-.teste1{
+.searchPc{
   display: flex;
 }
-.teste2{
+.searchMobile{
   display: none;
 }
-@media screen and (max-width: 450px){
-  .teste1{
-    display: none;
-  }
-  .teste2{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-    p{
-      color: #5f6368;
-      font-size: 1.1rem;
-    }
-    cursor: pointer;
-  }
+.searchMobileContainer{
+  width: 100%;
+  height: 4rem;
+  position: absolute;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-//fim do teste
-
 
 .headerContent{
   display: flex;
@@ -85,5 +73,30 @@
     border: none;
     background: transparent;
     cursor: pointer;
+  }
+}
+
+
+@media screen and (max-width: 450px){
+  .searchPc{
+    display: none;
+  }
+  .searchMobile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    p{
+      color: #5f6368;
+      font-size: 1.1rem;
+    }
+    cursor: pointer;
+  }
+  
+}
+@media screen and (min-width: 451px){
+  .searchMobileContainer{
+    display: none;
   }
 }

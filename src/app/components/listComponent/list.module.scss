@@ -11,10 +11,12 @@
   flex-direction: column;
   align-items: center;
   h1{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'roboto', sans-serif;
     font-size: 1.8rem;
+    color: #5f6368;
     
   }
+  
 }
 .list{
   width: 100%;
@@ -22,6 +24,7 @@
   flex-wrap: wrap;
   overflow-y: auto;
   justify-content: center;
+  
   
   li{
     width: 250px;
@@ -105,5 +108,7 @@
       
     }
   }
+  
 }
+
 
