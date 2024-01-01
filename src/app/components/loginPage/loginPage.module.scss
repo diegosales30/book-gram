@@ -6,8 +6,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  //background-color: #000020;
-  background-color: #161616;
+  background-color:#f1f3f4;
+  
 }
 .logoContainer{
   display: flex;
@@ -26,9 +26,10 @@
       margin-left: 45px;
       border-radius: 85px 25px 25px 25px;
       padding: 5px;
-      background-color: #ffffff;
+      //background-color: #ffffff;
       font-size: 150px;
       color: #c02d32;
+      
       
     }
     .svgLogo2{
@@ -40,6 +41,7 @@
       background-color: #ffffff;
       font-size: 45px;
       color: #c02d32;
+      //border: 1px solid #c02d32;
     }
   }
     
@@ -47,17 +49,19 @@
   h1{
     display: flex;
     align-items: center;
-    //Verdana, Geneva, Tahoma, sans-serif;
-    font-family: cursive;
-    font-size: 3rem;
+    font-family: 'roboto', sans-serif;
+    font-size: 2.8rem;
+    margin-top: 10px;
+    color: #2e2e2e;
+    // text-shadow: 5px 1px 1px 5px #2c2c2c;
     
   }
 }
 .btnContainer{
   height: 100px;
   display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  align-items: flex-end;
+  justify-content: center;
   button{
     display: flex;
     align-items: center;
@@ -68,11 +72,12 @@
     height: 35px;
     border: none;
     outline: none;
-   border-radius: 10px;
+    border-radius: 7px;
     background-color: #ffffff;
-    color:#000020;
+    color: #5f6368;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'roboto', sans-serif;
     font-size: 0.8rem;
     font-weight: 600;
     svg{
@@ -88,7 +93,8 @@
   p{
     text-align: center;
     margin: auto;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #ffffff;
+    font-family: 'roboto', sans-serif;
+    color: #5f6368;
+   
   }
 }

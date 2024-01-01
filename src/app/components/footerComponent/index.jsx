@@ -1,10 +1,11 @@
 "use client";
 import styles from "./footer.module.scss";
-import { FaMeta } from "react-icons/fa6";
+
+import { FcGoogle } from "react-icons/fc";
 function FooterComponent() {
   return (
     <footer className={styles.rodape}>
-      <p>&copy; 2024 BookGram from <FaMeta size={25} /> meta </p>
+      <p>&copy; 2024 Bookgram from<FcGoogle size={20} />google </p>
     </footer>
   );
 }

@@ -1,20 +1,19 @@
 "use client";
 import styles from "./main.module.scss";
-import SearchComponent from "../searchComponent";
+
+import ListComponent from "../listComponent";
 
 //context
-import { useDarkContext } from "@/app/context/darkContext";
-import ListComponent from "../listComponent";
-import FooterComponent from "../footerComponent";
+//import { useDarkContext } from "@/app/context/darkContext";
 
 function MainComponent() {
-  const { dark } = useDarkContext();
+  //const { dark } = useDarkContext();
+  //className={dark ? styles.lightMode : styles.darkMode}
 
   return (
-    <main className={dark ? styles.lightMode : styles.darkMode}>
-      <SearchComponent />
+    <main className={styles.lightMode}>
+      
       <ListComponent />
-      <FooterComponent />
     </main>
   );
 }

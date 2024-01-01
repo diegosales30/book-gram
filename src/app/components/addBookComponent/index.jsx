@@ -39,8 +39,8 @@ function AddBookComponent() {
   return (
     <>
       <div className={styles.plusContainer}>
-        <FaPlusCircle size={25} onClick={handleOpenModal} />
-        <p>Adicionar livro</p>
+        <FaPlusCircle size={30} onClick={handleOpenModal} />
+        {/* <p>Adicionar livro</p> */}
       </div>
       {openModal && (
         <div className={styles.modalContainer}>

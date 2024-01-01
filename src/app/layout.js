@@ -1,9 +1,14 @@
-import { Inter } from "next/font/google";
+import { Inter,Roboto } from "next/font/google";
+//import { Roboto } from 'next/font/google'
 import "./globals.scss";
 import { LoggedContextProvider } from "./context/loginContext";
 import { DarkContextProvider } from "./context/darkContext";
 
 const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({
+  weight: "400",
+  subsets: ['latin'],
+})
 
 export const metadata = {
   title: "bookgram",
@@ -16,7 +21,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="shortcut icon" href="./favicom.ico" type="image/x-icon" />
       </head>
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <LoggedContextProvider>
           <DarkContextProvider>{children}</DarkContextProvider>
         </LoggedContextProvider>

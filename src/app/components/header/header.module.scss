@@ -1,6 +1,6 @@
 .headerContainer {
-  background-color: #333;
-  color: rgb(255, 255, 255);
+  background-color: #ffffff;
+  color: #5f6368;
   max-width: 1920px;
   min-width: 310px;
   height: 4rem;
@@ -8,20 +8,57 @@
   justify-content: space-between;
   align-items: center;
   margin: auto;
+  
 }
 
+//teste de display e media
+.teste1{
+  display: flex;
+}
+.teste2{
+  display: none;
+}
+@media screen and (max-width: 450px){
+  .teste1{
+    display: none;
+  }
+  .teste2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    p{
+      color: #5f6368;
+      font-size: 1.1rem;
+    }
+    cursor: pointer;
+  }
+}
+//fim do teste
+
+
+.headerContent{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  height: 100%;
+}
 .headerProfile {
   display: flex;
   align-items: center;
+  margin-right: 10px;
   height: 100%;
   margin-left: 10px;
 
   img{
     border-radius: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
   p{
     margin-left: 10px;
-    font-family: cursive;
+    font-family: 'roboto', sans-serif;
   }
 }
 
@@ -39,7 +76,7 @@
       margin-right: 5px;
     }
     p{
-      font-family: cursive;
+      font-family: 'roboto', sans-serif;
     }
   }
 

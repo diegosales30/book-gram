@@ -4,6 +4,8 @@ import styles from "./list.module.scss";
 
 import {FaEdit, FaTrash} from "react-icons/fa";
 import { BiSolidSpreadsheet } from "react-icons/bi";
+import { IoBookOutline } from "react-icons/io5";
+import { GiBookCover } from "react-icons/gi";
 
 import hpFenix from "../../assets/hpfenix.jpeg";
 import semcapa from "../../assets/default.png";
@@ -16,10 +18,11 @@ function ListComponent() {
         <ul className={styles.list}>
           <li>
             <span className={styles.deleteButton}>
-                <FaTrash  size={20} color="#CD5C5C"  />   
+                <FaTrash  size={15} color="#CD5C5C"  />   
             </span>
-            {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
-            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />}
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
             <div>
               <h2>Harry potter e a ordem da fenix</h2>
               <p>Autor: J.K Rowling</p>
@@ -41,10 +44,11 @@ function ListComponent() {
           </li>
           <li>
             <span className={styles.deleteButton}>
-                <FaTrash  size={20} color="#CD5C5C"  />   
+                <FaTrash  size={15} color="#CD5C5C"  />   
             </span>
-            {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
-            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />}
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
             <div>
               <h2>Harry potter e a ordem da fenix</h2>
               <p>Autor: J.K Rowling</p>
@@ -66,10 +70,11 @@ function ListComponent() {
           </li>
           <li>
             <span className={styles.deleteButton}>
-                <FaTrash  size={20} color="#CD5C5C"  />   
+                <FaTrash  size={15} color="#CD5C5C"  />   
             </span>
-            {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
-            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />}
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
             <div>
               <h2>Harry potter e a ordem da fenix</h2>
               <p>Autor: J.K Rowling</p>
@@ -91,10 +96,11 @@ function ListComponent() {
           </li>
           <li>
             <span className={styles.deleteButton}>
-                <FaTrash  size={20} color="#CD5C5C"  />   
+                <FaTrash  size={15} color="#CD5C5C"  />   
             </span>
-            {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
-            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />}
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
             <div>
               <h2>Harry potter e a ordem da fenix</h2>
               <p>Autor: J.K Rowling</p>
@@ -116,10 +122,11 @@ function ListComponent() {
           </li>
           <li>
             <span className={styles.deleteButton}>
-                <FaTrash  size={20} color="#CD5C5C"  />   
+                <FaTrash  size={15} color="#CD5C5C"  />   
             </span>
-            {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
-            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />}
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
             <div>
               <h2>Harry potter e a ordem da fenix</h2>
               <p>Autor: J.K Rowling</p>
@@ -141,10 +148,11 @@ function ListComponent() {
           </li>
           <li>
             <span className={styles.deleteButton}>
-                <FaTrash  size={20} color="#CD5C5C"  />   
+                <FaTrash  size={15} color="#CD5C5C"  />   
             </span>
-            {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
-            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />}
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
             <div>
               <h2>Harry potter e a ordem da fenix</h2>
               <p>Autor: J.K Rowling</p>
@@ -164,6 +172,59 @@ function ListComponent() {
               </span> */}
             </div>
           </li>
+          <li>
+            <span className={styles.deleteButton}>
+                <FaTrash  size={15} color="#CD5C5C"  />   
+            </span>
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
+            <div>
+              <h2>Harry potter e a ordem da fenix</h2>
+              <p>Autor: J.K Rowling</p>
+            </div>
+            <div className={styles.buttons}>
+              <span>
+                <BiSolidSpreadsheet size={25} />
+                <p>ler</p>
+              </span>
+              <span>
+                <FaEdit size={25} />
+                <p>editar</p>
+              </span>
+              {/* <span>
+                <RiDeleteBin2Fill size={25} />
+                <p>excluir</p>
+              </span> */}
+            </div>
+          </li>
+          <li>
+            <span className={styles.deleteButton}>
+                <FaTrash  size={15} color="#CD5C5C"  />   
+            </span>
+            {/* {!hpFenix && <Image src={hpFenix} width={150} height={150}  />}
+            {hpFenix && <Image src={semcapa} width={125} height={125} alt="img do livro default" />} */}
+            <GiBookCover size={100}  />
+            <div>
+              <h2>Harry potter e a ordem da fenix</h2>
+              <p>Autor: J.K Rowling</p>
+            </div>
+            <div className={styles.buttons}>
+              <span>
+                <BiSolidSpreadsheet size={25} />
+                <p>ler</p>
+              </span>
+              <span>
+                <FaEdit size={25} />
+                <p>editar</p>
+              </span>
+              {/* <span>
+                <RiDeleteBin2Fill size={25} />
+                <p>excluir</p>
+              </span> */}
+            </div>
+          </li>
+          
         </ul>
       </div>
       
