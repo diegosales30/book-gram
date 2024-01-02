@@ -39,7 +39,12 @@
   margin-right: 10px;
   height: 100%;
   margin-left: 10px;
-
+  button{
+    border: none;
+    background: #35353500;
+    border-radius: 50%;
+    cursor: pointer;
+  }
   img{
     border-radius: 100%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -50,6 +55,90 @@
   }
 }
 
+//modal logout
+.logoutContainer{
+  position: relative;
+
+  top: 0;
+  right:  0;
+  z-index: 1000;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+.logoutModal{
+  position: absolute;
+  top: 2.5rem;
+  right: 10px;
+  width: 280px;
+  height: 350px;
+  border-radius: 15px;
+  background-color:#f1f3f4;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .closeIcon{
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+  }
+}
+.logoutHeader{
+  width: 82%;
+  height: 6rem;
+  
+  background-color: #fdfdfd;
+  border-radius: 15px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  p{
+    font-family: 'roboto', sans-serif;
+    font-size: 1rem;
+    color: #292929;
+    margin-top: 10px;
+  }
+}
+.logoutBtns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(82% - 7rem);
+  gap: 10px;
+  button{
+    width: 250px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fdfdfd;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    svg{
+      margin-left: 10px;
+      color: #5f6368af;
+    }
+    p{
+      margin-left: 15px;
+      font-family: 'roboto', sans-serif;
+      color: #292929;
+      font-size: 1rem;
+    }
+  }
+}
 
 .headerBtn{
   display: flex;
