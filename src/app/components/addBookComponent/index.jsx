@@ -48,7 +48,7 @@ function AddBookComponent() {
             <IoMdCloseCircle
               size={25}
               onClick={handleOpenModal}
-              color="red"
+              color="#CD5C5C"
               className={styles.closeIcon}
             />
             <div className={styles.modalForm}>
@@ -58,7 +58,7 @@ function AddBookComponent() {
               {/* selecionar pdf */}
               <div className={styles.pdfPicker}>
                 <label htmlFor="pdfInput">
-                  <span>buscar PDF</span>
+                  <span>Buscar PDF</span>
                   <FaFilePdf size={20} />
                 </label>
                 <input
@@ -85,7 +85,7 @@ function AddBookComponent() {
               {/* selecionar img */}
               <div className={styles.imagePicker}>
                 <label htmlFor="image">
-                  <span>buscar imagem</span>
+                  <span>Imagem (opcional)</span>
                   <IoMdImages size={25} />
                 </label>
                 <input
