@@ -2,7 +2,7 @@
 import styles from './loading.module.scss';
 import loading from '../../assets/loading.gif'
 import Image from 'next/image';
-function Loading () {
+function LoadingComponent () {
 
   return (
     <div className={styles.container}>
@@ -11,4 +11,4 @@ function Loading () {
   )
 }
 
-export default Loading;
+export default LoadingComponent;

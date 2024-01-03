@@ -9,10 +9,22 @@ import { useRouter } from "next/navigation";
 
 import { auth, googleAuthProvider } from "@/app/services/firebase";
 import { signInWithPopup } from "firebase/auth";
+import { useEffect } from "react";
 
 function LoginPage() {
   const route = useRouter();
-  
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      route.push("/dashboard");
+    }
+    if (!token) {
+      route.push("/");
+    }
+  }, []);
+
   //login with google
   const handleSignInWithGoogle = async () => {
     try {
@@ -23,7 +35,7 @@ function LoginPage() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className={styles.container}>

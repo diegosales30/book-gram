@@ -1,15 +1,14 @@
-import { Inter,Roboto } from "next/font/google";
-//import { Roboto } from 'next/font/google'
+import { Inter, Roboto } from "next/font/google";
 import "./globals.scss";
-import { LoggedContextProvider } from "./context/loginContext";
+
 import { DarkContextProvider } from "./context/darkContext";
 import { StorageContextProvider } from "./context/storageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
   weight: "400",
-  subsets: ['latin'],
-})
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "bookgram",
@@ -24,13 +23,9 @@ export default function RootLayout({ children }) {
       </head>
       <body className={roboto.className}>
         <StorageContextProvider>
-          <LoggedContextProvider>
           <DarkContextProvider>{children}</DarkContextProvider>
-        </LoggedContextProvider>
         </StorageContextProvider>
-        
       </body>
     </html>
-    
   );
 }
