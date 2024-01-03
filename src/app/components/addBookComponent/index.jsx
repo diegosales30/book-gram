@@ -6,14 +6,19 @@ import { FaPlusCircle } from "react-icons/fa";
 import { IoMdCloseCircle, IoMdImages } from "react-icons/io";
 import { FaFilePdf } from "react-icons/fa6";
 
+import { auth, googleAuthProvider, db } from '../../services/firebase'
+import { collection, addDoc, doc } from 'firebase/firestore';
+
 function AddBookComponent() {
   const [openModal, setOpenModal] = useState(false);
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [selectedPdf, setSelectedPdf] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
-
   //search for image
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -23,10 +28,7 @@ function AddBookComponent() {
       setSelectedImage(imageUrl);
     }
   };
-
   //search  for pdf
-  const [selectedPdf, setSelectedPdf] = useState(null);
-
   const handlePdfChange = (event) => {
     const file = event.target.files[0];
 
@@ -34,6 +36,33 @@ function AddBookComponent() {
       const pdfUrl = URL.createObjectURL(file);
       setSelectedPdf(pdfUrl);
     }
+  };
+
+  //post book on google firebase
+  const handleBookSubmit = async (e) => {
+    e.preventDefault();
+
+    const user = auth.currentUser;
+    const userId = user.uid;
+
+    const bookCollectionRef = collection(db, 'users', userId, 'books');
+
+    const book = {
+      title,
+      author,
+      pdf: selectedPdf,
+      image: selectedImage,
+    };
+
+    console.log(book.title, book.author, book.pdf, book.image);
+
+    await addDoc(bookCollectionRef, book);
+    // Clear file inputs after submission
+    setTitle('');
+    setAuthor('');
+    setSelectedPdf(null);
+    setSelectedImage(null);
+    setOpenModal(false);
   };
 
   return (
@@ -51,10 +80,10 @@ function AddBookComponent() {
               color="#CD5C5C"
               className={styles.closeIcon}
             />
-            <div className={styles.modalForm}>
+            <form className={styles.modalForm} onSubmit={handleBookSubmit}>
               <h3>Adicionar livro</h3>
-              <input type="text" maxLength={50} placeholder="Título do livro" required />
-              <input type="text" maxLength={30} placeholder="Autor" required />
+              <input type="text" maxLength={50} placeholder="Título do livro" required  onChange={(e) => setTitle(e.target.value)} />
+              <input type="text" maxLength={30} placeholder="Autor" required  onChange={(e) => setAuthor(e.target.value)}/>
               {/* selecionar pdf */}
               <div className={styles.pdfPicker}>
                 <label htmlFor="pdfInput">
@@ -109,8 +138,8 @@ function AddBookComponent() {
                   />
                 </div>
               )}
-              <button className={styles.btnSend}>Salvar livro</button>
-            </div>
+              <button type="submit" className={styles.btnSend}>Salvar livro</button>
+            </form>
           </div>
         </div>
       )}

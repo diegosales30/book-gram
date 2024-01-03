@@ -24,11 +24,9 @@ function Header() {
 
   const searchMobileRef = useRef(null);
   const route = useRouter();
-  //const user = JSON.parse(localStorage?.getItem("user"));
 
   useEffect(() => {
     const user = JSON.parse(localStorage?.getItem("user"));
-
     setUser(user);
   }, []);
 
@@ -62,8 +60,7 @@ function Header() {
       localStorage.clear();
       route.push("/");
    }; 
-*/
-
+  */
   const handleLogout = async () => {
     try {
       await signOut(auth);
