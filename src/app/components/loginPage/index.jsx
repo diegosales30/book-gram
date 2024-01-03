@@ -6,20 +6,24 @@ import { FaBook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { PiFilePdfBold } from "react-icons/pi";
 import { useRouter } from "next/navigation";
-//context
-import { useLoggedContext } from "@/app/context/loginContext";
 
+import { auth, googleAuthProvider } from "@/app/services/firebase";
+import { signInWithPopup } from "firebase/auth";
 
 function LoginPage() {
-
-  const { setLogged } = useLoggedContext();
-  
   const route = useRouter();
-
-  const handleLogin = () => {
-    setLogged(true);
-    route.push("/dashboard");
-  };
+  
+  //login with google
+  const handleSignInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleAuthProvider);
+      localStorage.setItem("token", result.user.accessToken);
+      localStorage.setItem("user", JSON.stringify(result.user));
+      route.push("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -31,7 +35,7 @@ function LoginPage() {
         <h1>BookGram</h1>
       </div>
       <div className={styles.btnContainer}>
-        <button onClick={handleLogin}>
+        <button onClick={handleSignInWithGoogle}>
           Entrar com o Google
           <FcGoogle size={25} />
         </button>

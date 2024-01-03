@@ -1,14 +1,12 @@
 "use client";
-import { useRouter } from "next/navigation";
+
 import DashboardComponent from "../components/dashboardComponent";
-import { useLoggedContext } from "../context/loginContext";
+
+import { useStorageContext } from "../context/storageContext";
 
 function Dashboard() {
-  const { logged } = useLoggedContext();
-  const route = useRouter();
+  const { token } = useStorageContext();
 
-  if(!logged) route.push("/");
-  if(logged) return <DashboardComponent />
-
+  return <DashboardComponent />;
 }
 export default Dashboard;
