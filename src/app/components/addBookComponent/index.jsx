@@ -6,65 +6,65 @@ import { FaPlusCircle } from "react-icons/fa";
 import { IoMdCloseCircle, IoMdImages } from "react-icons/io";
 import { FaFilePdf } from "react-icons/fa6";
 
-import { auth, googleAuthProvider, db } from '../../services/firebase'
-import { collection, addDoc, doc } from 'firebase/firestore';
+import { auth, db, storage } from "../../services/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
+import { useDataContext } from "@/app/context/userContext";
+
 
 function AddBookComponent() {
   const [openModal, setOpenModal] = useState(false);
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const {setChangeIndicator } = useDataContext();
 
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
-  //search for image
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
 
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
-    }
-  };
-  //search  for pdf
-  const handlePdfChange = (event) => {
-    const file = event.target.files[0];
-
-    if (file && file.type === "application/pdf") {
-      const pdfUrl = URL.createObjectURL(file);
-      setSelectedPdf(pdfUrl);
-    }
-  };
-
-  //post book on google firebase
   const handleBookSubmit = async (e) => {
     e.preventDefault();
-
     const user = auth.currentUser;
+    if (!user) {
+      // Usuário não autenticado, lidar com isso conforme necessário
+      return;
+    }
     const userId = user.uid;
-
-    const bookCollectionRef = collection(db, 'users', userId, 'books');
-
+    const bookCollectionRef = collection(db, "users", userId, "books");
     const book = {
       title,
       author,
-      pdf: selectedPdf,
-      image: selectedImage,
+      createdAt: serverTimestamp(),
     };
+    // Adiciona os dados do livro ao Firestore
+    const livroRef = await addDoc(bookCollectionRef, book);
 
-    console.log(book.title, book.author, book.pdf, book.image);
+    // Obtem o ID gerado pelo Firestore
+    const livroId = livroRef.id;
 
-    await addDoc(bookCollectionRef, book);
-    // Clear file inputs after submission
-    setTitle('');
-    setAuthor('');
+    // Upload da imagem para o Storage
+    const imagemPath = `livros/${userId}/${livroId}/imagem.jpg`;
+    const imagemRef = ref(storage, imagemPath);
+    await uploadBytes(imagemRef, selectedImage);
+
+    // Upload do PDF para o Storage
+    const pdfPath = `livros/${userId}/${livroId}/livro.pdf`;
+    const pdfRef = ref(storage, pdfPath);
+    await uploadBytes(pdfRef, selectedPdf);
+
+   
+    // Limpar os inputs do arquivo após o envio
+    setTitle("");
+    setAuthor("");
     setSelectedPdf(null);
     setSelectedImage(null);
-    setOpenModal(false);
-  };
 
+    // Fechar o modal
+    setOpenModal(false);
+    setChangeIndicator((prev) => !prev);
+  };
   return (
     <>
       <div className={styles.plusContainer}>
@@ -82,11 +82,23 @@ function AddBookComponent() {
             />
             <form className={styles.modalForm} onSubmit={handleBookSubmit}>
               <h3>Adicionar livro</h3>
-              <input type="text" maxLength={50} placeholder="Título do livro" required  onChange={(e) => setTitle(e.target.value)} />
-              <input type="text" maxLength={30} placeholder="Autor" required  onChange={(e) => setAuthor(e.target.value)}/>
+              <input
+                type="text"
+                maxLength={50}
+                placeholder="Título do livro"
+                required
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <input
+                type="text"
+                maxLength={30}
+                placeholder="Autor"
+                required
+                onChange={(e) => setAuthor(e.target.value)}
+              />
               {/* selecionar pdf */}
               <div className={styles.pdfPicker}>
-                <label htmlFor="pdfInput">
+                <label htmlFor="pdfInput" >
                   <span>Buscar PDF</span>
                   <FaFilePdf size={20} />
                 </label>
@@ -95,7 +107,7 @@ function AddBookComponent() {
                   accept=".pdf"
                   id="pdfInput"
                   required
-                  onChange={handlePdfChange}
+                  onChange={(e) => setSelectedPdf(e.target.files[0])}
                 />
                 {/* pdf selected */}
                 {selectedPdf && (
@@ -121,24 +133,15 @@ function AddBookComponent() {
                   type="file"
                   accept="image/*"
                   id="image"
-                  onChange={handleImageChange}
+                  onChange={(e) => setSelectedImage(e.target.files[0])}
                 />
+                {/* img selecionada */}
+                {selectedImage && <p>Imagem Selecionada</p>}
               </div>
-              {/* img selecionada */}
-              {selectedImage && (
-                <div className={styles.imagePicker}>
-                  <img
-                    src={selectedImage}
-                    alt="Selected"
-                    style={{
-                      width: "150px",
-                      height: "150px",
-                      borderRadius: "15px",
-                    }}
-                  />
-                </div>
-              )}
-              <button type="submit" className={styles.btnSend}>Salvar livro</button>
+
+              <button type="submit" className={styles.btnSend}>
+                Salvar livro
+              </button>
             </form>
           </div>
         </div>

@@ -1,13 +1,13 @@
 .plusContainer{
-  //margin-top: 10px;
+
   margin-left: 15px;
   display: flex;
   align-items: center;
   
   svg{
     cursor: pointer;
-    color: #5f6368;
-    //box-shadow: 0 0 25px 1px rgba(87, 87, 87, 0.521);
+    color: #5f6368b6;
+
     border-radius: 100%;
   }
   p{
@@ -103,7 +103,7 @@
   
   label{
     display: flex;
-    align-items: center;
+    align-items: center !important;
     justify-content: space-between;
     width: 150px;
     cursor: pointer;
@@ -120,6 +120,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  
   p{
     color: #4ed460;
     font-size: 0.9rem;
@@ -127,13 +129,22 @@
     font-family: "roboto", sans-serif;
   }
 }
+
 .imagePicker{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   
+  p{
+    color: #4ed460;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: "roboto", sans-serif;
+  }
   
 }
+
 .btnSend{
 
   width: 150px;

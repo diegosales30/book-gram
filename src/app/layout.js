@@ -1,8 +1,6 @@
 import { Inter, Roboto } from "next/font/google";
 import "./globals.scss";
-
-import { DarkContextProvider } from "./context/darkContext";
-import { StorageContextProvider } from "./context/storageContext";
+import { DataContextProvider } from "./context/userContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
@@ -22,9 +20,7 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="./favicom.ico" type="image/x-icon" />
       </head>
       <body className={roboto.className}>
-        <StorageContextProvider>
-          <DarkContextProvider>{children}</DarkContextProvider>
-        </StorageContextProvider>
+        <DataContextProvider>{children}</DataContextProvider>
       </body>
     </html>
   );
