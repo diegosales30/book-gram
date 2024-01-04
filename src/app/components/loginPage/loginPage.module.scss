@@ -26,7 +26,6 @@
       margin-left: 45px;
       border-radius: 85px 25px 25px 25px;
       padding: 5px;
-      //background-color: #ffffff;
       font-size: 150px;
       color: #c02d32;
       
@@ -41,22 +40,28 @@
       background-color: #ffffff;
       font-size: 45px;
       color: #c02d32;
-      //border: 1px solid #c02d32;
+      
     }
   }
     
-  
-  h1{
+    .bookgram{
     display: flex;
     align-items: center;
-    font-family: 'roboto', sans-serif;
-    font-size: 2.8rem;
+    justify-content: center;
     margin-top: 10px;
-    color: #2e2e2e;
-    // text-shadow: 5px 1px 1px 5px #2c2c2c;
+    width: 100%;
+    svg{
+      font-size: 2.4rem;
+      color: #c02d32cb;
+      transition: transform 0.3s ease;
+      &:hover{
+        transform: translateY(-5px);
+      }
+    }
     
   }
 }
+
 .btnContainer{
   height: 100px;
   display: flex;
@@ -84,6 +89,10 @@
       margin-left: 6px;
     
     }
+    transition: transform 0.1s ease;
+      &:hover{
+        transform: translateY(-1px);
+      }
   }
 }
 .textContainer{

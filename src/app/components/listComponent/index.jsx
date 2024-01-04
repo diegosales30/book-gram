@@ -13,10 +13,8 @@ import {
   orderBy,
 } from "firebase/firestore";
 
-import { FaEdit, FaTrash } from "react-icons/fa";
-import { BiSolidSpreadsheet } from "react-icons/bi";
-
-import { GiBookCover } from "react-icons/gi";
+import {  FaTrash } from "react-icons/fa";
+import { BsFillCollectionPlayFill } from "react-icons/bs";
 
 import { getDownloadURL, ref } from "firebase/storage";
 import AddBookComponent from "../addBookComponent";
@@ -35,7 +33,10 @@ function ListComponent() {
       if (user) {
         const userId = user.uid;
         const userFilesCollection = collection(db, "users", userId, "books");
-        const userFilesQuery = query(userFilesCollection, orderBy('createdAt', 'desc'));
+        const userFilesQuery = query(
+          userFilesCollection,
+          orderBy("createdAt", "desc")
+        );
 
         try {
           const querySnapshot = await getDocs(userFilesQuery);
@@ -109,35 +110,19 @@ function ListComponent() {
                   <span className={styles.deleteButton}>
                     <FaTrash size={15} color="#CD5C5C" />
                   </span>
-
-                  {files?.imageUrl ? (
-                    <img src={files.imageUrl} alt="Oops, Sem Imagem🙁" />
-                  ) : (
-                    <GiBookCover size={150} />
-                  )}
-                  {/* <div className={styles.divPdf}>
-                <embed
-                      src={files.title}
-                      type="application/pdf"
-                      width="250px"
-                      height="250px"
-                    />
-              </div> */}
-                  <div>
-                    <h2>{files?.title}</h2>
-                    <p>{files?.author}</p>
+                  <div className={styles.containerImg}>
+                    <img src={files.imageUrl} alt="Oops, não possui imagem!" />
+                    <div className={styles.containerHeaders}>
+                      <h2>{files?.title}</h2>
+                      <p>Autor: {files?.author}</p>
+                    </div>
                   </div>
-                  <div className={styles.buttons}>
-                    <span>
-                      <a href={files.pdfUrl} target="_blank">
-                        <BiSolidSpreadsheet size={25} />
-                      </a>
-                      <p>ler</p>
-                    </span>
-                    <span>
-                      <FaEdit size={25} />
-                      <p>editar</p>
-                    </span>
+                  <div className={styles.btnRead}>
+                    <a href={files.pdfUrl} target="_blank">
+                      <BsFillCollectionPlayFill  size={25} />
+                      
+                    </a>
+                    
                   </div>
                 </li>
               ))}

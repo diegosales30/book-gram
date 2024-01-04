@@ -11,6 +11,8 @@ import { auth, googleAuthProvider } from "@/app/services/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useEffect } from "react";
 
+import { TbSquareRoundedLetterB, TbSquareRoundedLetterO,TbSquareRoundedLetterK, TbSquareRoundedLetterG, TbSquareRoundedLetterR, TbSquareRoundedLetterA, TbSquareRoundedLetterM } from "react-icons/tb";
+
 function LoginPage() {
   const route = useRouter();
 
@@ -44,7 +46,16 @@ function LoginPage() {
           <FaBook className={styles.svgLogo} />
           <PiFilePdfBold className={styles.svgLogo2} />
         </div>
-        <h1>BookGram</h1>
+        <div className={styles.bookgram}>
+          <TbSquareRoundedLetterB size={50} />
+          <TbSquareRoundedLetterO  />
+          <TbSquareRoundedLetterO  /> 
+          <TbSquareRoundedLetterK  />
+          <TbSquareRoundedLetterG  />
+          <TbSquareRoundedLetterR  />
+          <TbSquareRoundedLetterA  />
+          <TbSquareRoundedLetterM  size={50}/>
+        </div>
       </div>
       <div className={styles.btnContainer}>
         <button onClick={handleSignInWithGoogle}>
