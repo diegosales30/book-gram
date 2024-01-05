@@ -1,5 +1,6 @@
 import { Inter, Roboto } from "next/font/google";
 import "./globals.scss";
+
 import { DataContextProvider } from "./context/userContext";
 
 const inter = Inter({ subsets: ["latin"] });

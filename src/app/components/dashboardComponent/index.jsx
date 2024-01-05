@@ -5,6 +5,9 @@ import FooterComponent from "../footerComponent";
 import Header from "../header";
 import MainComponent from "../mainComponent";
 import { useRouter } from "next/navigation";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function DashboardComponent() {
   const [token, setToken] = useState();
@@ -26,6 +29,7 @@ function DashboardComponent() {
       {token && (
         <>
           <Header />
+          <ToastContainer />
           <MainComponent />
           <FooterComponent />
         </>

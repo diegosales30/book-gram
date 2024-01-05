@@ -1,5 +1,4 @@
 "use client";
-
 import DashboardComponent from "../components/dashboardComponent";
 
 function Dashboard() {

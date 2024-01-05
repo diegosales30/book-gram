@@ -10,6 +10,7 @@ import { auth, db, storage } from "../../services/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { useDataContext } from "@/app/context/userContext";
+import { toast } from "react-toastify";
 
 
 function AddBookComponent() {
@@ -25,6 +26,7 @@ function AddBookComponent() {
   };
 
   const handleBookSubmit = async (e) => {
+    setOpenModal(false);
     e.preventDefault();
     const user = auth.currentUser;
     if (!user) {
@@ -54,22 +56,28 @@ function AddBookComponent() {
     const pdfRef = ref(storage, pdfPath);
     await uploadBytes(pdfRef, selectedPdf);
 
-   
     // Limpar os inputs do arquivo após o envio
     setTitle("");
     setAuthor("");
     setSelectedPdf(null);
     setSelectedImage(null);
-
-    // Fechar o modal
-    setOpenModal(false);
+    toast.success('Livro adicionado com sucesso!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+ 
     setChangeIndicator((prev) => !prev);
   };
   return (
     <>
       <div className={styles.plusContainer}>
         <FaPlusCircle size={30} onClick={handleOpenModal} />
-        {/* <p>Adicionar livro</p> */}
       </div>
       {openModal && (
         <div className={styles.modalContainer}>
@@ -113,12 +121,6 @@ function AddBookComponent() {
                 {selectedPdf && (
                   <div className={styles.pdfPicker}>
                     <p>PDF Selecionado</p>
-                    {/* <embed
-                      src={selectedPdf}
-                      type="application/pdf"
-                      width="150px"
-                      height="150px"
-                    /> */}
                   </div>
                 )}
               </div>

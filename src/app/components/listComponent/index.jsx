@@ -1,31 +1,32 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./list.module.scss";
-
 import { auth, db, storage } from "../../services/firebase";
 import {
   collection,
   query,
-  where,
   getDocs,
-  getDoc,
   doc,
   orderBy,
+  deleteDoc,
 } from "firebase/firestore";
-
-import {  FaTrash } from "react-icons/fa";
+import "react-toastify/dist/ReactToastify.css";
+import { FaTrash } from "react-icons/fa";
 import { BsFillCollectionPlayFill } from "react-icons/bs";
 
-import { getDownloadURL, ref } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref } from "firebase/storage";
 import AddBookComponent from "../addBookComponent";
 import { useDataContext } from "@/app/context/userContext";
 
+import { toast } from "react-toastify";
+
 function ListComponent() {
   const [userFiles, setUserFiles] = useState([]);
-  const { changeIndicator } = useDataContext();
+  const { changeIndicator, setChangeIndicator } = useDataContext();
   //ou tentar previa do pdf no lugar
   //depois arrumar pra abri pdf com o botao ler
 
+  //get dos files on firebase
   useEffect(() => {
     const fetchUserFiles = async () => {
       const user = auth.currentUser;
@@ -63,7 +64,6 @@ function ListComponent() {
     // Cleanup: remova o listener quando o componente for desmontado
     return () => unsubscribe();
   }, [changeIndicator]);
-
   const getImageUrl = async (userId, livroId) => {
     const path = `livros/${userId}/${livroId}/imagem.jpg`;
     const imageRef = ref(storage, path);
@@ -76,7 +76,6 @@ function ListComponent() {
       return null;
     }
   };
-
   const getPdfUrl = async (userId, livroId) => {
     const path = `livros/${userId}/${livroId}/livro.pdf`;
     const pdfRef = ref(storage, path);
@@ -89,6 +88,52 @@ function ListComponent() {
       return null;
     }
   };
+
+  //delete file on firebase
+  const handleDeleteBook = async (livroId) => {
+    const user = auth.currentUser;
+    const userId = user.uid;
+    try {
+      // Remove o documento do Firestore
+      await deleteDoc(doc(db, "users", userId, "books", livroId));
+
+      // Remove a imagem do Storage
+      const pathIMG = `livros/${userId}/${livroId}/imagem.jpg`;
+      const imageRef = ref(storage, pathIMG);
+      await deleteObject(imageRef);
+
+      // Remove o PDF do Storage
+      const pathPDF = `livros/${userId}/${livroId}/livro.pdf`;
+      const pdfRef = ref(storage, pathPDF);
+      await deleteObject(pdfRef);
+
+      // Atualiza o indicador de mudança para acionar a renderização
+      setChangeIndicator((prevIndicator) => !prevIndicator);
+      toast.success("Livro excluído com sucesso!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      toast.error("Erro, tente mais tarde!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      console.error("Erro ao excluir livro:", error);
+    }
+  };
+
   return (
     <>
       {userFiles.length < 1 && (
@@ -108,7 +153,11 @@ function ListComponent() {
               {userFiles.map((files, index) => (
                 <li key={files.docId}>
                   <span className={styles.deleteButton}>
-                    <FaTrash size={15} color="#CD5C5C" />
+                    <FaTrash
+                      size={15}
+                      color="#CD5C5C"
+                      onClick={() => handleDeleteBook(files.docId)}
+                    />
                   </span>
                   <div className={styles.containerImg}>
                     <img src={files.imageUrl} alt="Oops, não possui imagem!" />
@@ -119,10 +168,8 @@ function ListComponent() {
                   </div>
                   <div className={styles.btnRead}>
                     <a href={files.pdfUrl} target="_blank">
-                      <BsFillCollectionPlayFill  size={25} />
-                      
+                      <BsFillCollectionPlayFill size={25} />
                     </a>
-                    
                   </div>
                 </li>
               ))}

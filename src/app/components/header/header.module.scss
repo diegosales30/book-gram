@@ -99,15 +99,16 @@
   margin: auto;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   img{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   }
   p{
     font-family: 'roboto', sans-serif;
-    font-size: 1rem;
-    color: #292929;
+    color: #5f6368;
+      font-weight: 600;
+      font-size: 0.9rem;
     margin-top: 10px;
   }
 }
@@ -136,8 +137,9 @@
     p{
       margin-left: 15px;
       font-family: 'roboto', sans-serif;
-      color: #292929;
-      font-size: 1rem;
+      color: #5f6368;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
   }
 }

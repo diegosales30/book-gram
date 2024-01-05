@@ -17,11 +17,25 @@
   margin: 0 auto;
   p{
     display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+  
   svg{
     margin: 5px;
+    color: #c02d32b9;
+    transition: transform 0.2s ease;
+    &:hover{
+      transform: translateY(-5px);
+    }
+    &:last-child {
+      color: #45882bee;
+      &:hover{
+        transform: translateY(0px);
+      }
+    }
   }
   }
+  
 }
