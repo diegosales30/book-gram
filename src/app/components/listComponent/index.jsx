@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./list.module.scss";
 import { auth, db, storage } from "../../services/firebase";
 import {
@@ -19,13 +19,13 @@ import AddBookComponent from "../addBookComponent";
 import { useDataContext } from "@/app/context/userContext";
 
 import { toast } from "react-toastify";
+import { useUserFilesContext } from "@/app/context/userFilesContext";
+import { useFilteredContext } from "@/app/context/filteredContext";
 
 function ListComponent() {
-  const [userFiles, setUserFiles] = useState([]);
+  const {userData, setUserData} = useUserFilesContext()
+  const {filteredData, setFilteredData} = useFilteredContext()
   const { changeIndicator, setChangeIndicator } = useDataContext();
-  //ou tentar previa do pdf no lugar
-  //depois arrumar pra abri pdf com o botao ler
-
   //get dos files on firebase
   useEffect(() => {
     const fetchUserFiles = async () => {
@@ -49,8 +49,9 @@ function ListComponent() {
               return { ...fileData, imageUrl, pdfUrl, docId: doc.id };
             })
           );
-
-          setUserFiles(filesData);
+          //context
+          setUserData(filesData);
+          setFilteredData(filesData);
         } catch (error) {
           console.error("Erro ao buscar arquivos do usuário:", error);
         }
@@ -136,7 +137,7 @@ function ListComponent() {
 
   return (
     <>
-      {userFiles.length < 1 && (
+      {userData.length < 1 && (
         <div className={styles.containerEmptyBook}>
           <h1>Ainda não possui livros 🙁 </h1>
           <span>
@@ -145,12 +146,12 @@ function ListComponent() {
           </span>
         </div>
       )}
-      {userFiles.length >= 1 && (
+      {userData.length >= 1 && (
         <main className={styles.container}>
           <div className={styles.containerList}>
             <h1>Meus livros</h1>
             <ul className={styles.list}>
-              {userFiles.map((files, index) => (
+              {filteredData.map((files, index) => (
                 <li key={files.docId}>
                   <span className={styles.deleteButton}>
                     <FaTrash

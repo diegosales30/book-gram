@@ -17,11 +17,12 @@ import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { auth } from "@/app/services/firebase";
 
+
 function Header() {
+  //user localStorage
   const [user, setUser] = useState(null);
   const [searchMobile, setSearchMobile] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
-
   const searchMobileRef = useRef(null);
   const route = useRouter();
 
@@ -72,6 +73,7 @@ function Header() {
     }
   };
 
+  
   return (
     <header className={styles.headerContainer}>
       <AddBookComponent />
