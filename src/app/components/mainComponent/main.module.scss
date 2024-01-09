@@ -1,0 +1,17 @@
+//modo nortuno aplicado na pagina toda
+.darkMode{
+  max-width: 1920px;
+  min-width: 310px;
+  height: calc(100vh - 4rem);
+  margin: auto;
+  background-color: #161616;
+  color: #ffffff;
+}
+.lightMode{
+  max-width: 1920px;
+  min-width: 310px;
+  height: calc(100vh - 4rem);
+  margin: auto;
+  background-color:#f1f3f4;
+  color: #161616;
+}

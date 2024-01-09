@@ -1,0 +1,65 @@
+.container{
+  width: 700px;
+  margin: auto;
+  
+}
+.searchContainer{
+  padding: 5px;
+  
+  
+  height: 48px;
+  
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-sizing: border-box;
+  
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.178);
+  margin-left: 10px;
+  input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: 'roboto', sans-serif;
+    color: #5f6368;
+    
+   &:placeholder-shown{
+    color: #5f6368;
+    font-size: 1rem;
+    font-family: 'roboto', sans-serif;
+   }
+   
+  }
+  svg{
+    cursor: pointer;
+   }
+}
+
+
+@media screen and (max-width: 840px) {
+  .container {
+      width: 650px;
+  }
+}
+@media screen and (max-width: 786px) {
+  .container {
+      width: 600px;
+  }
+}
+@media screen and (max-width: 740px) {
+  .container {
+      width: 500px;
+  }
+}
+@media screen and (max-width: 740px) {
+  .container {
+      width: 400px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .container {
+      width: 320px;
+  }
+}

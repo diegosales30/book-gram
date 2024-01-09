@@ -1,0 +1,106 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color:#f1f3f4;
+  
+}
+.logoContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    .svgLogo{
+      display: inline-block;
+      margin: 0 auto;
+      margin-left: 45px;
+      border-radius: 85px 25px 25px 25px;
+      padding: 5px;
+      font-size: 150px;
+      color: #c02d32;
+      
+      
+    }
+    .svgLogo2{
+      position: relative;
+      bottom: 45px;
+      right: 155px;
+      border-radius: round($number: 50%);
+      padding: 5px;
+      background-color: #ffffff;
+      font-size: 45px;
+      color: #c02d32;
+      
+    }
+  }  
+  .bookgram{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    svg{
+      font-size: 2.4rem;
+      color: #c02d32cb;
+      transition: transform 0.3s ease;
+      &:hover{
+        transform: translateY(-5px);
+      }
+    } 
+  }
+}
+
+.btnContainer{
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-top: 20px;
+    width: 200px;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #5f6368;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-family: 'roboto', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    svg{
+      margin-left: 6px;
+    }
+    &:hover{
+      box-shadow: 0 0 10px 0 rgba(14, 14, 14, 0.233);
+    }
+    
+  }
+}
+.textContainer{
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+  p{
+    text-align: center;
+    margin: auto;
+    font-family: 'roboto', sans-serif;
+    color: #5f6368;
+    font-weight: bold;
+   
+  }
+}

@@ -1,0 +1,168 @@
+.container{
+  max-width: 1360px;
+  width: 100%;
+  height: calc(100vh - 10.9rem);
+  margin: auto;
+}
+.containerEmptyBook{
+  max-width: 1360px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  h1{
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'roboto', sans-serif;
+    color: #5f6368;
+    margin-bottom: 15px;
+  }
+  span{
+    
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-family: 'roboto', sans-serif;
+    color: #5f6368;
+  
+  }
+}
+.containerList{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    font-family: 'roboto', sans-serif;
+    font-size: 1.5rem;
+    color: #5f6368;
+    margin-top: 15px;
+  }
+}
+.list{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  justify-content: center;
+
+  li{
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(117, 117, 117, 0.486);
+    padding: 15px;
+    margin: 15px;
+    transition: transform 0.2s ease;
+    &:hover{
+      transform: translateY(-3px);
+    }
+    
+    
+    .deleteButton{
+      position: relative;
+      top: -3px;
+      left: 116px;
+      border: none;
+      cursor: pointer;
+      margin: 0;
+      svg{
+        display: block;
+        margin: 0;
+        margin-top: -10px;
+        
+      }
+      
+    }
+    
+    .containerImg{
+      background-color: #f0f0f0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 3px 3px 3px 1px rgba(48, 48, 48, 0.432);
+      border-radius: 0 7px 7px 0;
+      border-left: 7px dotted rgba(75, 75, 75, 0.521);
+      border-right: 5px double rgba(73, 73, 73, 0.486);
+        img{
+          width: 100% ;
+          height: 200px;
+          
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0 5px 0 0;
+          &:after {
+            content: '🌄';
+            z-index: 0;
+            margin: 0 auto;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            
+          }
+        }
+        .containerHeaders{
+          background-color: #d5d8d893;
+          width: 100%;
+          padding: 5px;
+          border-radius:  0 0 7px 5px;
+        h2{
+          font-family: 'roboto', sans-serif;
+          color: #2e2f30;
+          font-size: 0.9rem;
+          white-space: nowrap;     
+          overflow: hidden;           
+          text-overflow: ellipsis; 
+          max-width: 25ch;
+        }
+        p{
+          font-family: 'roboto', sans-serif;
+          color: #5e5d5df3;
+          font-size: 0.6rem;
+          white-space: nowrap;     
+          overflow: hidden;           
+          text-overflow: ellipsis; 
+          max-width: 25ch;
+          font-weight: 600;
+        }
+      }
+    }
+    .btnRead{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+      p{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        svg{
+          color: #5f6368;
+        }
+  
+      } 
+    }
+  }
+  
+}
+
+
