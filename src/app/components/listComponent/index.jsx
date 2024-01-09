@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./list.module.scss";
 import { auth, db, storage } from "../../services/firebase";
 import {
@@ -21,11 +21,24 @@ import { useDataContext } from "@/app/context/userContext";
 import { toast } from "react-toastify";
 import { useUserFilesContext } from "@/app/context/userFilesContext";
 import { useFilteredContext } from "@/app/context/filteredContext";
+import PdfViewer from "../pdfViewComponent";
 
 function ListComponent() {
-  const {userData, setUserData} = useUserFilesContext()
-  const {filteredData, setFilteredData} = useFilteredContext()
+  const { userData, setUserData } = useUserFilesContext();
+  const { filteredData, setFilteredData } = useFilteredContext();
   const { changeIndicator, setChangeIndicator } = useDataContext();
+
+  //pdf reader
+  const [pdfModalOpen, setPdfModalOpen] = useState(false);
+  const [selectedPdfUrl, setSelectedPdfUrl] = useState("");
+  
+
+  // Função para abrir o modal com o PDF selecionado
+  const handleOpenPdfModal = (pdfUrl) => {
+    setSelectedPdfUrl(pdfUrl);
+    setPdfModalOpen(!pdfModalOpen);
+  };
+  
   //get dos files on firebase
   useEffect(() => {
     const fetchUserFiles = async () => {
@@ -137,6 +150,8 @@ function ListComponent() {
 
   return (
     <>
+      {/* Adiciona o PdfViewer aqui */}
+      {pdfModalOpen && <PdfViewer pdfUrl={selectedPdfUrl} isOpen={handleOpenPdfModal}/>}
       {userData.length < 1 && (
         <div className={styles.containerEmptyBook}>
           <h1>Ainda não possui livros 🙁 </h1>
@@ -168,9 +183,12 @@ function ListComponent() {
                     </div>
                   </div>
                   <div className={styles.btnRead}>
-                    <a href={files.pdfUrl} target="_blank">
-                      <BsFillCollectionPlayFill size={25} />
-                    </a>
+                    <p>
+                      <BsFillCollectionPlayFill
+                        size={25}
+                        onClick={() => handleOpenPdfModal(files.pdfUrl)}
+                      />
+                    </p>
                   </div>
                 </li>
               ))}

@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  position: absolute;
+  z-index: 111;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  embed{
+    width: 100%;
+    max-width: 1280px;
+    height: 100vh;
+    min-width: 300px;
+    background-color: aliceblue;
+    border-radius: 15px;
+    
+  }
+  .footerbtn{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 1280px;
+    background-color: #333;  // Cor de fundo desejada
+    color: #fff;  // Cor do texto desejada
+    text-align: center;
+    padding: 10px;
+    display: flex;
+     justify-content: space-between;
+     svg{
+      margin-right: 15px;
+      cursor: pointer;
+     }
+     .btnarrow{
+      width: 200px;
+      display: flex;
+      justify-content: flex-start;
+      svg{
+        margin-left: 25px;
+        cursor: pointer;
+      }
+     }
+  }
+}
+
