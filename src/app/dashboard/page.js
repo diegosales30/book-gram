@@ -1,4 +1,5 @@
-"use client";
+import 'dotenv/config';
+
 import DashboardComponent from "../components/dashboardComponent";
 
 function Dashboard() {

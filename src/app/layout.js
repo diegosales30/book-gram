@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Inter, Roboto } from "next/font/google";
 import "./globals.scss";
 
@@ -16,6 +17,7 @@ export const metadata = {
   description: "Salve seus livros PDF em nuvem e leia em qualquer lugar!",
 };
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="pt-br">
       <head>

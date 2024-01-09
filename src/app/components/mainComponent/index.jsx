@@ -1,4 +1,5 @@
 "use client";
+import 'dotenv/config';
 import styles from "./main.module.scss";
 
 import ListComponent from "../listComponent";

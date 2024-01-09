@@ -10,45 +10,19 @@ const PdfViewer = ({ isOpen, pdfUrl }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const embedRef = useRef(null);
 
-  // const handlePrevPage = () => {
-  //   if (pageNumber > 1) {
-  //     setPageNumber(pageNumber - 1);
-  //     embedRef.current.src = `${pdfUrl}#page=${pageNumber - 1}`;
-  //   }
-  // };
-
-  // const handleNextPage = () => {
-  //   if (pageNumber < numPages) {
-  //     setPageNumber(pageNumber + 1);
-  //     embedRef.current.src = `${pdfUrl}#page=${pageNumber + 1}`;
-  //   }
-  //   setPageNumber(pageNumber + 1);
-  // };
-
-  // const onEmbedLoad = () => {
-  //   const embedElement = embedRef.current;
-  //   const pdfDocument = embedElement && embedElement.getSVGDocument();
-
-  //   if (pdfDocument) {
-  //     setNumPages(pdfDocument.documentElement.getAttribute('data-pdfjs-num-pages'));
-  //   }
-  // };
   const handlePrevPage = () => {
     if (pageNumber > 1) {
       setPageNumber(pageNumber - 1);
-      const newUrl = `${pdfUrl}#page=${pageNumber - 1}`;
-      embedRef.current.src = newUrl;
-      window.history.replaceState({ path: newUrl }, '', newUrl);
+      embedRef.current.src = `${pdfUrl}#page=${pageNumber - 1}`;
     }
   };
 
   const handleNextPage = () => {
     if (pageNumber < numPages) {
       setPageNumber(pageNumber + 1);
-      const newUrl = `${pdfUrl}#page=${pageNumber + 1}`;
-      embedRef.current.src = newUrl;
-      window.history.replaceState({ path: newUrl }, '', newUrl);
+      embedRef.current.src = `${pdfUrl}#page=${pageNumber + 1}`;
     }
+    setPageNumber(pageNumber + 1);
   };
 
   const onEmbedLoad = () => {
@@ -89,3 +63,4 @@ const PdfViewer = ({ isOpen, pdfUrl }) => {
 };
 
 export default PdfViewer;
+
